@@ -9,13 +9,13 @@
 // document.querySelector('.guess').value = 23;
 // console.log(document.querySelector('.guess').value);
 
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 let scoreNumber = 20;
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
-  console.log(guess, typeof guess);
+
   // when there is no input
   if (!guess) {
     document.querySelector('.message').textContent = '⛔ No number!';
@@ -51,4 +51,18 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
+});
+
+document.querySelector('.again').addEventListener('click', function () {
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+  scoreNumber = 20;
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.number').value = secretNumber;
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.score').textContent = scoreNumber;
+  document.querySelector('.guess').textContent = '';
+
+  //css
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').style.width = '15rem';
 });
